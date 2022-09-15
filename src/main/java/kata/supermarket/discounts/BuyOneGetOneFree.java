@@ -1,4 +1,12 @@
-package kata.supermarket;
+package kata.supermarket.discounts;
 
-public class BuyOneGetOneFree {
+import java.math.BigDecimal;
+
+public class BuyOneGetOneFree extends Discount {
+
+    @Override
+    public BigDecimal applyDiscount(BigDecimal basePrice) {
+        return null;
+    }
+
 }

@@ -1,8 +1,9 @@
 package kata.supermarket;
 
-public enum DiscountTags {
+public enum DiscountTag {
 
-    BUYONEGETONEFREE;
-    BUYONEKILOFORHALFPRICE;
+    NODISCOUNT,
+    BUYONEGETONEFREE,
+    BUYONEKILOFORHALFPRICE
 
 }
