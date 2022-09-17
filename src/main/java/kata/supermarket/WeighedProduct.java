@@ -20,11 +20,4 @@ public class WeighedProduct {
         return new ItemByWeight(this, kilos);
     }
 
-    public Item withHafPriceTagB(WeighedProduct product) {
-        return ItemByWeight.builder()
-                .product(product)
-                .discountTags(HALF_PRICE_KILO)
-                .build();
-    }
-
 }

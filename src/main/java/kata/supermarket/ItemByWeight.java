@@ -1,6 +1,5 @@
 package kata.supermarket;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
@@ -22,13 +21,6 @@ public class ItemByWeight implements Item {
         this.product = product;
         this.weightInKilos = weightInKilos;
         this.discountTags = NO_DISCOUNT;
-    }
-
-    public static ItemByWeight ItemWithDiscount(final WeighedProduct product, final DiscountTag discountTag) {
-        return ItemByWeight.builder()
-                .product(product)
-                .discountTags(discountTag)
-                .build();
     }
 
     @Override

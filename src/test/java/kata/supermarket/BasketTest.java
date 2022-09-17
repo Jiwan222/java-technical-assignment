@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Stream;
 
+import static kata.supermarket.DiscountTag.HALF_PRICE_KILO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BasketTest {
@@ -49,7 +50,7 @@ class BasketTest {
     }
 
     private static Arguments oneDiscountedItem() {
-        return Arguments.of("a half price kilo of veg", "1", Collections.singleton(aKiloOfHalfPriceVeg()));
+        return Arguments.of("a half price kilo of veg", "1.5", Collections.singleton(kiloOfHalfPriceItem(threePoundPerKiloVeg())));
     }
 
     private static Arguments aSingleItemPricedByWeight() {
@@ -87,16 +88,20 @@ class BasketTest {
         return new WeighedProduct(new BigDecimal("4.99"));
     }
 
-    private static WeighedProduct aKiloOfVeg() {
-        return new WeighedProduct(new BigDecimal("3"));
-    }
-
     private static Item twoFiftyGramsOfAmericanSweets() {
         return aKiloOfAmericanSweets().weighing(new BigDecimal(".25"));
     }
 
-    private static Item aKiloOfHalfPriceVeg() {
-        return aKiloOfVeg().weighing(new BigDecimal("1"));
+    private static WeighedProduct threePoundPerKiloVeg() {
+        return new WeighedProduct(new BigDecimal("3"));
+    }
+
+    private static Item kiloOfHalfPriceItem(WeighedProduct product) {
+        return ItemByWeight.builder()
+                .product(product)
+                .weightInKilos(new BigDecimal("1"))
+                .discountTags(HALF_PRICE_KILO)
+                .build();
     }
 
     private static WeighedProduct aKiloOfPickAndMix() {
