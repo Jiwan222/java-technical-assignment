@@ -45,12 +45,26 @@ class BasketTest {
 
     static Stream<Arguments> basketProvidesTotalValueWithDiscounts() {
         return Stream.of(
-                oneDiscountedItem()
+                oneDiscountedItem(),
+                multipleItemsWithAndWithoutDiscounts(),
+                multipleDiscountedItems()
         );
     }
 
     private static Arguments oneDiscountedItem() {
-        return Arguments.of("a half price kilo of veg", "1.50", Collections.singleton(kiloOfHalfPriceItem(threePoundPerKiloVeg())));
+        return Arguments.of("a half price kilo of veg", "1.50", Collections.singleton(kiloOfHalfPriceItem(threePoundPerKiloItem())));
+    }
+
+    private static Arguments multipleItemsWithAndWithoutDiscounts() {
+        return Arguments.of("multiple weighed items with and without discounts", "2.10",
+                Arrays.asList(kiloOfHalfPriceItem(threePoundPerKiloItem()), twoHundredGramsOfPickAndMix())
+        );
+    }
+
+    private static Arguments multipleDiscountedItems() {
+        return Arguments.of("multiple weighed items with discounts", "11.50",
+                Arrays.asList(kiloOfHalfPriceItem(threePoundPerKiloItem()), kiloOfHalfPriceItem(twentyPoundPerKiloItem()))
+        );
     }
 
     private static Arguments aSingleItemPricedByWeight() {
@@ -92,11 +106,15 @@ class BasketTest {
         return aKiloOfAmericanSweets().weighing(new BigDecimal(".25"));
     }
 
-    private static WeighedProduct threePoundPerKiloVeg() {
+    private static WeighedProduct threePoundPerKiloItem() {
         return new WeighedProduct(new BigDecimal("3"));
     }
 
-    private static Item kiloOfHalfPriceItem(WeighedProduct product) {
+    private static WeighedProduct twentyPoundPerKiloItem() {
+        return new WeighedProduct(new BigDecimal("20"));
+    }
+
+    static Item kiloOfHalfPriceItem(WeighedProduct product) {
         return ItemByWeight.builder()
                 .product(product)
                 .weightInKilos(new BigDecimal("1"))

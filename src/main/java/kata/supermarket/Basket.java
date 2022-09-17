@@ -40,7 +40,11 @@ public class Basket {
         }
 
         private BigDecimal discounts() {
-            return DiscountProcessor.getTotalBasketDiscounts(items);
+            DiscountProcessor discountProcessor = DiscountProcessor.builder()
+                    .items(items)
+                    .discounts(BigDecimal.ZERO)
+                    .build();
+            return discountProcessor.getTotalDiscounts();
         }
 
         private BigDecimal calculate() {

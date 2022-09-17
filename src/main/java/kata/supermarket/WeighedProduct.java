@@ -2,8 +2,6 @@ package kata.supermarket;
 
 import java.math.BigDecimal;
 
-import static kata.supermarket.DiscountTag.HALF_PRICE_KILO;
-
 public class WeighedProduct {
 
     private final BigDecimal pricePerKilo;
