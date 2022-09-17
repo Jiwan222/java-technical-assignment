@@ -14,13 +14,13 @@ public class ItemByWeight implements Item {
 
     private final WeighedProduct product;
     private final BigDecimal weightInKilos;
-    private final Enum<DiscountTag> discountTags;
+    private final DiscountTag discountTag;
 
 
     ItemByWeight(final WeighedProduct product, final BigDecimal weightInKilos) {
         this.product = product;
         this.weightInKilos = weightInKilos;
-        this.discountTags = NO_DISCOUNT;
+        this.discountTag = NO_DISCOUNT;
     }
 
     @Override
@@ -28,7 +28,10 @@ public class ItemByWeight implements Item {
         return product.pricePerKilo().multiply(weightInKilos).setScale(2, HALF_UP);
     }
 
-
+    @Override
+    public DiscountTag getDiscountTag() {
+        return discountTag;
+    }
 
 
 }

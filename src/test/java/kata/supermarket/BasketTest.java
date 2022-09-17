@@ -50,7 +50,7 @@ class BasketTest {
     }
 
     private static Arguments oneDiscountedItem() {
-        return Arguments.of("a half price kilo of veg", "1.5", Collections.singleton(kiloOfHalfPriceItem(threePoundPerKiloVeg())));
+        return Arguments.of("a half price kilo of veg", "1.50", Collections.singleton(kiloOfHalfPriceItem(threePoundPerKiloVeg())));
     }
 
     private static Arguments aSingleItemPricedByWeight() {
@@ -100,7 +100,7 @@ class BasketTest {
         return ItemByWeight.builder()
                 .product(product)
                 .weightInKilos(new BigDecimal("1"))
-                .discountTags(HALF_PRICE_KILO)
+                .discountTag(HALF_PRICE_KILO)
                 .build();
     }
 

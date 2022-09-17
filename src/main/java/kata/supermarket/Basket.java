@@ -29,7 +29,6 @@ public class Basket {
 
     private class TotalCalculator {
         private final List<Item> items;
-        //private final DiscountProcessor discountProcessor;
 
         TotalCalculator() {
             this.items = items();
@@ -50,8 +49,7 @@ public class Basket {
          *  which provides that functionality.
          */
         private BigDecimal discounts() {
-            return BigDecimal.ZERO;
-            //return DiscountProcessor.applyDiscounts(items);
+            return DiscountProcessor.getTotalBasketDiscounts(items);
         }
 
         private BigDecimal calculate() {
