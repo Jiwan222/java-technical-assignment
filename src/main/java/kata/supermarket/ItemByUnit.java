@@ -1,7 +1,7 @@
 package kata.supermarket;
 
 import java.math.BigDecimal;
-import static kata.supermarket.DiscountTag.NODISCOUNT;
+import static kata.supermarket.DiscountTag.NO_DISCOUNT;
 
 public class ItemByUnit implements Item {
 
@@ -11,7 +11,7 @@ public class ItemByUnit implements Item {
 
     public ItemByUnit(Product product) {
         this.product = product;
-        this.discountTags = NODISCOUNT;
+        this.discountTags = NO_DISCOUNT;
     }
 
     public ItemByUnit(Product product, DiscountTag discountTag) {

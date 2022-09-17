@@ -1,10 +1,8 @@
 package kata.supermarket;
 
-import kata.supermarket.discounts.Discount;
-
 import java.math.BigDecimal;
 
-import static kata.supermarket.DiscountTag.BUYONEKILOFORHALFPRICE;
+import static kata.supermarket.DiscountTag.HALF_PRICE_KILO;
 import static kata.supermarket.ItemByUnit.ItemByUnitWithDiscount;
 
 public class Product {
@@ -24,7 +22,7 @@ public class Product {
     }
 
     public Item oneOfWithHalfPriceKilo() {
-        return ItemByUnitWithDiscount(this, BUYONEKILOFORHALFPRICE);
+        return ItemByUnitWithDiscount(this, HALF_PRICE_KILO);
     }
 
 }

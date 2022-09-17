@@ -1,10 +1,16 @@
 package kata.supermarket;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+
 import java.math.BigDecimal;
 
 import static java.math.RoundingMode.HALF_UP;
-import static kata.supermarket.DiscountTag.NODISCOUNT;
+import static kata.supermarket.DiscountTag.NO_DISCOUNT;
 
+@Builder
+@RequiredArgsConstructor
 public class ItemByWeight implements Item {
 
     private final WeighedProduct product;
@@ -15,19 +21,14 @@ public class ItemByWeight implements Item {
     ItemByWeight(final WeighedProduct product, final BigDecimal weightInKilos) {
         this.product = product;
         this.weightInKilos = weightInKilos;
-        this.discountTags = NODISCOUNT;
+        this.discountTags = NO_DISCOUNT;
     }
 
-    ItemByWeight(final WeighedProduct product, final BigDecimal weightInKilos, final DiscountTag discountTag) {
-        this.product = product;
-        this.weightInKilos = weightInKilos;
-        this.discountTags = discountTag;
-    }
-
-    public static ItemByWeight ItemByWeightWithDiscount(final WeighedProduct product,
-                                                        BigDecimal weightInKilos,
-                                                        final DiscountTag discountTag) {
-        return new ItemByWeight(product, weightInKilos, discountTag);
+    public static ItemByWeight ItemWithDiscount(final WeighedProduct product, final DiscountTag discountTag) {
+        return ItemByWeight.builder()
+                .product(product)
+                .discountTags(discountTag)
+                .build();
     }
 
     @Override
